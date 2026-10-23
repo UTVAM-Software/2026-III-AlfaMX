@@ -154,4 +154,4 @@ def crear_grupo(request):
                 permiso = Permission.objects.get(pk=p_id)
                 grupo.permissions.add(permiso)
             return redirect('gestion_usuarios')
-    return render(request, 'academia/form_grupo.html', {'permisos': permisos})
+    return render(request, 'academia/form_grupo.html', {'permisos': permisos})  
