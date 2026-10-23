@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+</head>
+<body>
+    <h2>Crear Nuevo Usuario</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p><label>Nombre de usuario:</label><br><input type="text" name="username" required></p>
+        <p><label>Correo electrónico:</label><br><input type="email" name="email"></p>
+        <p><label>Contraseña:</label><br><input type="password" name="password" required></p>
+        <p>
+            <label>Asignar Grupo/Rol:</label><br>
+            <select name="grupo">
+                <option value="">-- Ninguno --</option>
+                {% for g in grupos %}
+                <option value="{{ g.pk }}">{{ g.name }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <button type="submit">Crear Usuario</button>
+        <a href="{% url 'gestion_usuarios' %}">Cancelar</a>
+    </form>
+</body>
+</html>

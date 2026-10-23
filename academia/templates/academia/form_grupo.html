@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Grupo</title>
+</head>
+<body>
+    <h2>Crear Grupo / Rol y Asignar Permisos</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p><label>Nombre del Grupo:</label><br><input type="text" name="nombre" required></p>
+        <p>
+            <label>Selecciona los permisos (mantén presionado Ctrl para elegir varios):</label><br>
+            <select name="permisos" multiple size="10">
+                {% for p in permisos %}
+                <option value="{{ p.pk }}">{{ p.name }} ({{ p.codename }})</option>
+                {% endfor %}
+            </select>
+        </p>
+        <button type="submit">Guardar Grupo</button>
+        <a href="{% url 'gestion_usuarios' %}">Cancelar</a>
+    </form>
+</body>
+</html>

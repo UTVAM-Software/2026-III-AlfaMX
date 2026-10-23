@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Academia</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Panel Principal - Academia</h1>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <span>Hola, <strong>{{ request.user.username }}</strong></span>
+            <button type="submit">Cerrar Sesión</button>
+        </form>
+    </div>
+
+    <hr>
+    <p>
+        <a href="{% url 'crear_modulo' %}">+ Nuevo Módulo</a> |
+        <a href="{% url 'registrar_alumno' %}">+ Registrar Alumno</a> |
+        <a href="{% url 'gestion_usuarios' %}">⚙️ Gestión de Usuarios y Grupos (Django Auth)</a>
+    </p>
+    <hr>
+
+    <h2>Módulos</h2>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Nombre</th>
+            <th>Orden</th>
+            <th>Acciones</th>
+        </tr>
+        {% for m in modulos %}
+        <tr>
+            <td>{{ m.nombre }}</td>
+            <td>{{ m.orden }}</td>
+            <td>
+                <a href="{% url 'detalle_modulo' m.pk %}">Ver Lecciones</a> |
+                <a href="{% url 'editar_modulo' m.pk %}">Editar</a> |
+                <a href="{% url 'eliminar_modulo' m.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No hay módulos registrados.</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Alumnos Registrados</h2>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+        {% for a in alumnos %}
+        <tr>
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.edad }}</td>
+            <td>
+                <a href="{% url 'editar_alumno' a.pk %}">Editar</a> |
+                <a href="{% url 'eliminar_alumno' a.pk %}">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No hay alumnos registrados.</td></tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo: {{ modulo.nombre }} - Alfabetiza MX</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; text-align: center; }
+        header { background: #1976d2; color: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; }
+        .btn-back { display: inline-block; margin-bottom: 20px; background: #607d8b; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .btn-back:hover { background: #455a64; }
+        .lessons-container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .lesson-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; text-align: left; }
+        .lesson-card h3 { margin: 0 0 5px 0; color: #0d47a1; }
+        .lesson-card p { margin: 0; color: #555; font-size: 14px; }
+        .btn-start { background: #2e7d32; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+        .btn-start:hover { background: #1b5e20; }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'home' %}" class="btn-back">← Volver al Inicio</a>
+
+    <header>
+        <h1>Módulo: {{ modulo.nombre }}</h1>
+        <p>Explora las lecciones y actividades de este bloque</p>
+    </header>
+
+    <div class="lessons-container">
+        {% for leccion in lecciones %}
+            <div class="lesson-card">
+                <div>
+                    <h3>{{ leccion.titulo }}</h3>
+                    <p>Nivel de dificultad: {{ leccion.nivel }}</p>
+                </div>
+                <!-- Busca la primera actividad vinculada a esta lección para iniciarla -->
+                {% with primera_actividad=leccion.actividades.first %}
+                    {% if primera_actividad %}
+                        <a href="{% url 'realizar_actividad' primera_actividad.pk %}" class="btn-start">Iniciar Lección</a>
+                    {% else %}
+                        <span style="color: #888; font-size: 14px;">Próximamente</span>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% empty %}
+            <p>Aún no hay lecciones registradas para este módulo. Agrégalas desde el <a href="/admin/">Panel de Administración</a>.</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
