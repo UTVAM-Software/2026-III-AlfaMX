@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Alumno - Alfabetiza MX</title>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f7f9fc; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; border-bottom: 6px solid #6c5ce7; }
+        h1 { color: #6c5ce7; margin-bottom: 10px; font-weight: 800; }
+        p { color: #718096; margin-bottom: 25px; font-weight: 500; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-weight: 700; color: #2d3748; }
+        input { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; box-sizing: border-box; outline: none; transition: border 0.2s; }
+        input:focus { border-color: #6c5ce7; }
+        .btn-submit { background: #6c5ce7; color: white; border: none; width: 100%; padding: 14px; font-size: 16px; font-weight: 700; border-radius: 12px; cursor: pointer; transition: background 0.2s, transform 0.2s; box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3); }
+        .btn-submit:hover { background: #5b4bc4; transform: translateY(-2px); }
+        .back-link { display: block; margin-top: 20px; color: #718096; text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: #2d3748; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1> Regístrate </h1>
+        <p>Ingresa tus datos para comenzar tu aprendizaje</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Ej. María López">
+            </div>
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" required placeholder="Ej. 30" min="1" max="120">
+            </div>
+            <button type="submit" class="btn-submit">¡Comenzar a Aprender! 🚀</button>
+        </form>
+
+        <a href="{% url 'home' %}" class="back-link">← Volver al inicio</a>
+    </div>
+
+</body>
+</html>

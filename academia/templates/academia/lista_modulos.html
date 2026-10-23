@@ -1,0 +1,10 @@
+<ul>
+    {% for modulo in modulos %}
+        <li>
+            <!-- Enlace que apunta al detalle del módulo -->
+            <a href="{% url 'detalle_modulo' modulo.pk %}">{{ modulo.nombre }}</a> - {{ modulo.icono }}
+        </li>
+    {% empty %}
+        <li>No hay módulos registrados todavía.</li>
+    {% endfor %}
+</ul>
