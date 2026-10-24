@@ -54,3 +54,125 @@
     </table>
 </body>
 </html>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 35px;
+        background: linear-gradient(135deg, #e9f8ef, #fff0f5);
+        font-family: Arial, sans-serif;
+        color: #263b31;
+    }
+
+    h2 {
+        margin: 0 0 25px;
+        padding: 22px 26px;
+        background: #ffffff;
+        border-left: 7px solid #238b57;
+        border-radius: 12px;
+        box-shadow: 0 5px 18px rgba(30, 80, 50, 0.08);
+        color: #205c3b;
+        font-size: 26px;
+    }
+
+    h3 {
+        margin: 28px 0 15px;
+        color: #28563d;
+        font-size: 20px;
+    }
+
+    a {
+        display: inline-block;
+        margin: 4px 5px 10px 0;
+        padding: 10px 15px;
+        border-radius: 8px;
+        background: #238b57;
+        color: #ffffff;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    a:hover {
+        background: #176b40;
+        transform: translateY(-2px);
+    }
+
+    table {
+        width: 100%;
+        margin: 12px 0 28px;
+        border-collapse: collapse;
+        overflow: hidden;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 5px 18px rgba(30, 80, 50, 0.08);
+    }
+
+    th {
+        padding: 15px;
+        background: #238b57;
+        color: #ffffff;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    td {
+        padding: 14px 15px;
+        border-bottom: 1px solid #e4eee7;
+        color: #35473b;
+        vertical-align: middle;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+        background: #f3faf5;
+    }
+
+    tbody tr:hover {
+        background: #fff0f5;
+    }
+
+    table a {
+        margin: 2px 3px 2px 0;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    td a[href*="eliminar"],
+    td a[href*="delete"] {
+        background: #c74360;
+    }
+
+    td a[href*="eliminar"]:hover,
+    td a[href*="delete"]:hover {
+        background: #a52d48;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 18px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        th,
+        td {
+            padding: 11px;
+        }
+    }
+</style>
