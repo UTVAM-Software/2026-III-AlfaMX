@@ -1,23 +1,175 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario de Módulo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Módulo - Alfabetiza MX</title>
+
+    <style>
+        :root {
+            --verde: #087f5b;
+            --verde-oscuro: #075b45;
+            --rosa: #d6336c;
+            --fondo: #f2fbf8;
+            --texto: #18212f;
+            --texto-secundario: #64748b;
+            --blanco: #ffffff;
+            --borde: #dcece6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at top left, #e0f5eb, transparent 35%),
+                radial-gradient(circle at top right, #fce7ef, transparent 35%),
+                var(--fondo);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--texto);
+        }
+
+        h2 {
+            width: 100%;
+            max-width: 480px;
+            margin: 0;
+            padding: 24px;
+            background: var(--blanco);
+            border-top: 6px solid var(--verde);
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 8px 24px rgba(17, 65, 51, 0.08);
+            color: var(--verde-oscuro);
+            font-size: 26px;
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 480px;
+            padding: 8px 28px 28px;
+            background: var(--blanco);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 8px 24px rgba(17, 65, 51, 0.08);
+        }
+
+        p {
+            margin: 18px 0;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--verde-oscuro);
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--borde);
+            border-radius: 10px;
+            background: #fbfefc;
+            color: var(--texto);
+            font-family: inherit;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            border-color: var(--verde);
+            box-shadow: 0 0 0 3px rgba(8, 127, 91, 0.15);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px 18px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(110deg, var(--verde), #159a77);
+            color: var(--blanco);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            background: var(--verde-oscuro);
+            transform: translateY(-2px);
+        }
+
+        a {
+            display: block;
+            margin-top: 14px;
+            padding: 12px 18px;
+            border: 2px solid #f3c4d4;
+            border-radius: 12px;
+            background: #fff0f5;
+            color: #8d3656;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        a:hover {
+            background: #fce0e9;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #f0b429;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 24px 14px;
+            }
+
+            h2 {
+                padding: 18px;
+                font-size: 22px;
+            }
+
+            form {
+                padding: 8px 20px 22px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
     <h2>{% if modulo %}Editar Módulo{% else %}Crear Módulo{% endif %}</h2>
+
     <form method="post">
         {% csrf_token %}
         <p>
             <label>Nombre del Módulo:</label><br>
             <input type="text" name="nombre" value="{{ modulo.nombre|default:'' }}" required>
         </p>
+
         <p>
             <label>Orden:</label><br>
             <input type="number" name="orden" value="{{ modulo.orden|default:0 }}" required>
         </p>
+
         <button type="submit">Guardar</button>
         <a href="{% url 'home' %}">Cancelar</a>
     </form>
+
 </body>
 </html>

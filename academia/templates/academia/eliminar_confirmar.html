@@ -1,15 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmar Eliminación</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar eliminación - Alfabetiza MX</title>
+
+    <style>
+        :root {
+            --verde: #087f5b;
+            --verde-oscuro: #075b45;
+            --rosa: #d6336c;
+            --fondo: #f2fbf8;
+            --texto: #18212f;
+            --blanco: #ffffff;
+            --borde: #dcece6;
+            --rojo: #c92a2a;
+            --rojo-oscuro: #a51111;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at top left, #e0f5eb, transparent 35%),
+                radial-gradient(circle at top right, #fce7ef, transparent 35%),
+                var(--fondo);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--texto);
+        }
+
+        h2 {
+            width: 100%;
+            max-width: 500px;
+            margin: 0;
+            padding: 28px 28px 12px;
+            background: var(--blanco);
+            border-top: 6px solid var(--rosa);
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 10px 25px rgba(17, 65, 51, 0.08);
+            color: var(--rojo);
+            font-size: 26px;
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            margin: 0;
+            padding: 20px 28px 30px;
+            background: var(--blanco);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 25px rgba(17, 65, 51, 0.08);
+            text-align: center;
+        }
+
+        p {
+            margin: 0 0 25px;
+            color: #475569;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px 18px;
+            border: none;
+            border-radius: 12px;
+            background: var(--rojo);
+            color: var(--blanco);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            background: var(--rojo-oscuro);
+            transform: translateY(-2px);
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            margin-top: 14px;
+            padding: 12px 18px;
+            border: 2px solid var(--borde);
+            border-radius: 12px;
+            background: #f2fbf8;
+            color: var(--verde-oscuro);
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        a:hover {
+            background: #e0f5eb;
+            transform: translateY(-2px);
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid #f0b429;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px;
+            }
+
+            h2 {
+                padding: 24px 18px 10px;
+                font-size: 22px;
+            }
+
+            form {
+                padding: 18px 20px 24px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h2>¿Estás seguro de que deseas eliminar "{{ objeto }}"?</h2>
+
+    <h2>¿Estás seguro de eliminar?</h2>
+
     <form method="post">
         {% csrf_token %}
+        <p>Esta acción no se puede deshacer. Confirma si deseas continuar.</p>
         <button type="submit">Sí, eliminar</button>
         <a href="{% url 'home' %}">Cancelar</a>
     </form>
+
 </body>
 </html>
