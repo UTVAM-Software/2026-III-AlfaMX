@@ -1,10 +1,86 @@
-<ul>
-    {% for modulo in modulos %}
-        <li>
-            <!-- Enlace que apunta al detalle del módulo -->
-            <a href="{% url 'detalle_modulo' modulo.pk %}">{{ modulo.nombre }}</a> - {{ modulo.icono }}
-        </li>
-    {% empty %}
-        <li>No hay módulos registrados todavía.</li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #e9f8ef, #fff0f5);
+            font-family: Arial, sans-serif;
+            color: #263b31;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+            color: #205c3b;
+            font-size: 24px;
+        }
+
+        ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            padding: 20px;
+            border-left: 5px solid #238b57;
+            border-radius: 12px;
+            background: #ffffff;
+            box-shadow: 0 5px 16px rgba(30, 80, 50, 0.09);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 22px rgba(30, 80, 50, 0.15);
+        }
+
+        a {
+            color: #176b40;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #a83d63;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            ul {
+                grid-template-columns: 1fr;
+            }
+
+            li {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        {% for modulo in modulos %}
+            <li>
+                <!-- Enlace que apunta al detalle del módulo -->
+                <a href="{% url 'detalle_modulo' modulo.pk %}">{{ modulo.nombre }}</a> - {{ modulo.icono }}
+            </li>
+        {% empty %}
+            <li>No hay módulos registrados todavía.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

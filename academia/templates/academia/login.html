@@ -3,13 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e9f8ef, #fff0f5);
+            font-family: Arial, sans-serif;
+            color: #263b31;
+        }
+
+        h2 {
+            width: 100%;
+            max-width: 400px;
+            margin: 0;
+            padding: 28px 30px 10px;
+            border-top: 6px solid #238b57;
+            border-radius: 16px 16px 0 0;
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(30, 80, 50, 0.1);
+            color: #205c3b;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 400px;
+            margin-left: 0;
+            padding: 15px 30px 30px;
+            border-radius: 0 0 16px 16px;
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(30, 80, 50, 0.1);
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 8px;
+            color: #28563d;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #d5e6db;
+            border-radius: 9px;
+            background: #fbfefc;
+            color: #263b31;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            border-color: #238b57;
+            box-shadow: 0 0 0 3px rgba(35, 139, 87, 0.15);
+        }
+
+        button,
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 9px;
+            background: #238b57;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover,
+        input[type="submit"]:hover {
+            background: #176b40;
+            transform: translateY(-2px);
+        }
+
+        a {
+            color: #8d3656;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                padding: 24px 20px 10px;
+                font-size: 23px;
+            }
+
+            form {
+                padding: 15px 20px 25px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Entrar</button>
-    </form>
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <h2>Iniciar Sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
 </body>
 </html>

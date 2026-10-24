@@ -3,6 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio - Academia</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #e9f8ef, #fff0f5);
+            font-family: Arial, sans-serif;
+            color: #263b31;
+        }
+
+        h1 {
+            margin: 0 0 25px;
+            padding: 28px;
+            border-radius: 16px;
+            background: #238b57;
+            color: #ffffff;
+            font-size: 30px;
+            box-shadow: 0 6px 18px rgba(30, 80, 50, 0.15);
+        }
+
+        h2 {
+            margin: 28px 0 16px;
+            color: #205c3b;
+            font-size: 22px;
+        }
+
+        h3 {
+            color: #8d3656;
+            font-size: 18px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 4px 5px 8px 0;
+            padding: 10px 16px;
+            border-radius: 8px;
+            background: #238b57;
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        a:hover {
+            background: #176b40;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            margin: 15px 0 30px;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(30, 80, 50, 0.08);
+        }
+
+        th {
+            padding: 15px;
+            background: #238b57;
+            color: #ffffff;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 14px 15px;
+            border-bottom: 1px solid #e4eee7;
+            vertical-align: middle;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f3faf5;
+        }
+
+        tbody tr:hover {
+            background: #fff0f5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        button {
+            padding: 9px 14px;
+            border: none;
+            border-radius: 8px;
+            background: #238b57;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #176b40;
+        }
+
+        input,
+        select {
+            max-width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #d5e6db;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #263b31;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #238b57;
+            outline: 2px solid rgba(35, 139, 87, 0.15);
+        }
+
+        form {
+            margin: 12px 0 22px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+
+            h1 {
+                padding: 20px;
+                font-size: 24px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            th,
+            td {
+                padding: 11px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div style="display: flex; justify-content: space-between; align-items: center;">
